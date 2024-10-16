@@ -4,14 +4,15 @@
 resolution = true
 skip-lint = false
 
-[programs.localnet]
-favorites = "CzJr18diAB3RETMVPNQSZsb9mpv4hTHyStHJhe3Te1jj"
+# [programs.localnet]
+# favorites = "3a83mZacMxzkshfthmCwR7TaG7EP4m2phcE8FtaYdCrN"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+# cluster = "localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

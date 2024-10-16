@@ -53,19 +53,27 @@ Before you can run and deploy your Solana programs, ensure you have the followin
 
 To run and deploy your Solana programs using the Anchor CLI, follow these steps:
 
-1. **Navigate to the Subproject Folder:**
+1. **Initialize a New Anchor Project:**
+   Start a new Anchor project with the following command:
+   ```bash
+   anchor init solana_project
+   ```
+
+2. **Navigate to the Subproject Folder:**
    Before building or deploying, navigate to the specific subproject folder you want to work on. For example:
    ```bash
    cd project
    ```
 
-2. **Build the Program:**
+3. **Build the Program:**
    In the subproject directory, run:
    ```bash
    anchor build
    ```
+   
+   When you run `anchor build`, it will automatically generate a program ID for your project. However, this ID will not be regenerated unless you run `cargo clean` followed by `anchor build` again.
 
-3. **Start the Local Validator:**
+4. **Start the Local Validator:**
    Start a local Solana test validator to simulate the Solana network:
    ```bash
    solana-test-validator
@@ -73,19 +81,62 @@ To run and deploy your Solana programs using the Anchor CLI, follow these steps:
 
    **Tip for WSL Users:** If you encounter the error `Unable to connect to validator: Client error: test-ledger/admin.rpc does not exist`, try navigating to the root directory with `cd ~/` and run the command again.
 
-4. **Deploy the Program:**
+5. **Deploy the Program:**
    Deploy your program to the local network:
    ```bash
    anchor deploy
    ```
 
-5. **Run Tests:**
-   If you have written tests for your program, execute them using:
+These commands will help you compile, deploy, and test your Solana programs using the Anchor framework.
+
+---
+
+## 🔧 Useful Commands
+
+1. **Change Network Configuration:**
+   Use the following commands to change the Solana network configuration:
+
+   - **Set to Localnet:**
+     ```bash
+     solana config set --url http://localhost:8899
+     ```
+
+   - **Set to Devnet:**
+     ```bash
+     solana config set --url https://api.devnet.solana.com
+     ```
+
+   - **Set to Testnet:**
+     ```bash
+     solana config set --url https://api.testnet.solana.com
+     ```
+
+   - **Set to Mainnet:**
+     ```bash
+     solana config set --url https://api.mainnet-beta.solana.com
+     ```
+
+   These commands configure the Solana CLI to interact with the specified network.
+
+2. **View Wallet Address:**
+   Display the public key (wallet address) from a keypair file:
    ```bash
-   anchor test
+   solana-keygen pubkey ~/.config/solana/id.json
    ```
 
-These commands will help you compile, deploy, and test your Solana programs using the Anchor framework.
+3. **Check Balance:**
+   Check the balance of your wallet:
+   ```bash
+   solana balance
+   ```
+   
+4. **Request an Airdrop:**
+   Request SOL tokens to be airdropped to your wallet on test networks (e.g., Devnet):
+   ```bash
+   solana airdrop 1
+   ```
+
+   Replace `1` with the number of SOL tokens you wish to request. This command is useful for testing purposes on networks like Devnet.
 
 ---
 
